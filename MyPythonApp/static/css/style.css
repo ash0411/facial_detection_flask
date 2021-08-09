@@ -1,0 +1,27 @@
+input[type=text],select {
+    width:100%;
+    padding: 12px 20px;
+    margin:8px 0;
+    display:inline-block;
+    border:1px corol;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit],select {
+    width:100%;
+    background-color:green;
+    padding: 12px 20px;
+    margin:8px 0;
+    display:inline-block;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit]:hover {
+    background-color:purple;
+} 
+div{
+    border-radius: 4px;
+    background-color:green;
+    padding:20px;
+}
