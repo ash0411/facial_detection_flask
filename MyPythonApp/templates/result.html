@@ -1,12 +1,19 @@
 <html>
     <h2>Final Result</h2>
     <body>
+        <table border="1">
+            {# this is a table #}
         {% for key,value in result.items() %}
         {% if value >= 40 %}
-        <h1>You have passed the {{ key }} exam</h1>
+        <tr>
+        <th>You have passed the {{ key }} exam</th>
+        <th>The score is {{ value }}</th>
         {% else %}
-        <h1> You have failed the {{ key }} exam</h1>
+        <th> You have failed the {{ key }} exam</th>
+        <th>The score is {{ value }}</th>
+        </tr>
         {% endif %}
         {% endfor %}
+        </table>
     </body>
 </html>
