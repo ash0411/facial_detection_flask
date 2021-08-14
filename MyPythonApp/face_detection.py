@@ -26,7 +26,7 @@ def generate_frames():
         if not success:
             break
         else:
-            global grey,neg,capture
+            global grey,neg,capture,face
             detector=cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
             eye_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_eye.xml')
             faces=detector.detectMultiScale(frame,1.1,7)
@@ -35,6 +35,10 @@ def generate_frames():
                 frame = gray
             if neg:
                 frame = cv2.bitwise_not(frame)
+            if face:
+                for (x,y,w,h) in faces:
+                    crop_frame = frame[x:x+w,y:y+h]
+                    frame = crop_frame
             if capture:
                 capture = 0
                 now = datetime.datetime.now()
