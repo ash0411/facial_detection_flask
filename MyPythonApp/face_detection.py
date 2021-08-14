@@ -26,10 +26,20 @@ def generate_frames():
         if not success:
             break
         else:
+            global grey,neg,capture
             detector=cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
             eye_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_eye.xml')
             faces=detector.detectMultiScale(frame,1.1,7)
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            if grey:
+                frame = gray
+            if neg:
+                frame = cv2.bitwise_not(frame)
+            if capture:
+                capture = 0
+                now = datetime.datetime.now()
+                p = os.path.sep.join(['shots', "shot_{}.png".format(str(now).replace(":",''))])
+                cv2.imwrite(p, frame)   
              #Draw the rectangle around each face
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
@@ -59,7 +69,7 @@ def tasks():
             capture = 1
         elif request.form.get('grey') == 'grey':
             global grey
-            grey = 1
+            grey = not grey
         elif request.form.get('negative')=='negative':
             global neg
             neg = not neg
