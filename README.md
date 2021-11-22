@@ -1,4 +1,4 @@
-# flask_practice
+# face detection
 To start the project first do <br>
 pip install -r requirnments.txt<br>
 The PythonApp contains 2 app<br>
